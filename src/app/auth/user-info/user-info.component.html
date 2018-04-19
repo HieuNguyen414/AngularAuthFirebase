@@ -1,0 +1,10 @@
+<div *ngIf="authService.currentUser">
+	<h5 class="text-primary">Thông tin</h5>
+	<h4>
+		<strong>ID User:</strong> {{ authService.currentUserId }}
+	</h4>
+	<h4>
+		<p>Email:</p> {{ authService.currentUserName }}
+	</h4>
+	<button class="button" (click)="logout()">Thoát</button>
+</div>

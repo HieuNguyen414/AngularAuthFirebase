@@ -1,0 +1,52 @@
+{{checkUserInfo()}}
+<div *ngIf="!authService.isUserEmailLoggedIn">
+  <div style="width: 350px;" *ngIf="isNewUser">
+
+    <form (ngSubmit)="onSignUp()">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="email">
+        <p *ngIf="errorMessage.length > 0" class="text-danger">{{errorMessage}}</p>
+      </div>
+
+      <div class="form-group">
+        <label>Mật khẩu</label>
+        <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="password">
+        <p *ngIf="error.message.length > 0" class="text-danger">{{errorMessage}}</p>
+      </div>
+
+      <button type="submit" class="btn btn-success">Đăng ký</button>
+    </form>
+
+    <h4 class="text-primary" (click)="changeForm()">Đăng nhập</h4>
+  </div>
+
+  <div style="width: 350px;" *ngIf="!isNewUser">
+
+    <p *ngIf="errorMessage.length > 0" class="text-danger">
+      {{errorMessage}}</p>
+
+    <p *ngIf="error.message.length > 0" class="text-danger">
+      {{error.message}}</p>
+
+    <form (ngSubmit)="onLoginEmail()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" name="email" required [(ngModel)]="email">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mật khẩu</label>
+        <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="password">
+      </div>
+
+      <button type="submit" class="btn btn-success">Đăng nhập</button>
+    </form>
+
+    <h4 class="text-primary" (click)="changeForm()">Chưa có tài khoản >> Đăng ký</h4>
+
+    <!-- <a *ngIf="!resetPassword && isValidMailFormat(email)" class="text-danger" (click)="sendResetEmail()">Reset Password for {{email}}</a>
+		<p *ngIf="resetPassword" class="text-success">Check your email to reset password!</p> -->
+
+  </div>
+</div>
